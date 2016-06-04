@@ -26,4 +26,5 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'register/', include(reg_urls)),
     url(r'^user/login/$',anonymous_required(auth_views.login),{'template_name': 'register/in.html'},name='in'),
+    url(r'^user/logout/$',auth_views.logout,{'template_name': 'logout.html'},name='logout'),
 ]
