@@ -17,14 +17,13 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from registration.views import  *
 from registration import urls as reg_urls
-from workshop.views import anonymous_required
+from django.contrib.auth import views as auth_views
+
+from mysite.views import anonymous_required
 
 urlpatterns = [
     url(r'^$', HomePageView.as_view(), name='home'),
     url(r'^admin/', admin.site.urls),
     url(r'register/', include(reg_urls)),
-url(r'^user/login/$',anonymous_required(auth_views.login),
-    {'template_name': 'register/in.html'},
-    name='login'),
-
+    url(r'^user/login/$',anonymous_required(auth_views.login),{'template_name': 'register/in.html'},name='in'),
 ]
