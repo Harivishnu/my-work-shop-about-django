@@ -19,6 +19,7 @@ from registration.views import  *
 from registration import urls as reg_urls
 from django.contrib.auth import views as auth_views
 
+
 from mysite.views import anonymous_required
 
 urlpatterns = [
@@ -27,4 +28,5 @@ urlpatterns = [
     url(r'register/', include(reg_urls)),
     url(r'^user/login/$',anonymous_required(auth_views.login),{'template_name': 'register/in.html'},name='in'),
     url(r'^user/logout/$',auth_views.logout,{'template_name': 'logout.html'},name='logout'),
+    url(r'^chocolate/add/', AddChocolate.as_view(),name="add_chocolate")
 ]
